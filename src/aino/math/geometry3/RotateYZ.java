@@ -42,6 +42,8 @@ public class RotateYZ extends Transform3
                             v.Y*cos_alpha - v.Z*sin_alpha,
                             v.Y*sin_alpha + v.Z*cos_alpha);
     }
+    
+    
     public Normal3 toWorldSpace(Normal3 n)
     {
         return new Normal3(n.X,

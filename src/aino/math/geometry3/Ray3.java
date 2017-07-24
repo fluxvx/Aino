@@ -24,14 +24,18 @@ public class Ray3
         O = new Point3(r.O);
         D = new Vector3(r.D);
     }
+    
     public Point3 pointAt(float t)
     {
         return new Point3(O.X + t*D.X,
                           O.Y + t*D.Y,
                           O.Z + t*D.Z);
     }
+    
+    
     public String toString()
     {
         return "{"+O.toString()+","+D.toString()+"}";
     }
+
 }

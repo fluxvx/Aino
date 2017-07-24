@@ -1,10 +1,11 @@
 package aino.math.geometry3;
-
 import aino.math.Matrix4x4;
 
 public class HMTransform3 extends Transform3
 {
+
     public Matrix4x4 M, I;
+
     public HMTransform3()
     {
         M = new Matrix4x4();
@@ -21,6 +22,7 @@ public class HMTransform3 extends Transform3
     {
         return new HMTransform3(M.multiply(t.M), t.I.multiply(I));
     }
+
     public Point3 toWorldSpace(Point3 p)
     {
         float tx = M.X00 * p.X + M.X01 * p.Y + M.X02 * p.Z + M.X03;
@@ -76,7 +78,6 @@ public class HMTransform3 extends Transform3
                            M.X01 * n.X + M.X11 * n.Y + M.X21 * n.Z,
                            M.X02 * n.X + M.X12 * n.Y + M.X22 * n.Z);
     }
-
 
 
     public void setAsIdentity()
@@ -239,7 +240,7 @@ public class HMTransform3 extends Transform3
     }
     
     
-    public void setAsBasis(Vector3 c, Vector3 x, Vector3 y, Vector3 z)
+    public void setAsBasis(Tuple3 c, Tuple3 x, Tuple3 y, Tuple3 z)
     {
         
         M.X00 = x.X;

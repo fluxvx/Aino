@@ -19,6 +19,8 @@ public abstract class Transform3
 	{
 		return new Ray3(toObjectSpace(r.O), toObjectSpace(r.D));   
 	}
+
+
 	public Box3 toWorldSpace(Box3 b)
 	{
 		Box3 r = new Box3(toWorldSpace(b.Pmin));
@@ -31,6 +33,7 @@ public abstract class Transform3
 		r.unionWith(toWorldSpace(b.Pmax));
 		return r;
 	}
+
 	public Box3 toObjectSpace(Box3 b)
 	{
 		Box3 r = new Box3(toObjectSpace(b.Pmin));

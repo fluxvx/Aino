@@ -12,6 +12,7 @@ public class Box3
                             Float.NEGATIVE_INFINITY,
                             Float.NEGATIVE_INFINITY);
     }
+    
     public Box3(Point3 a, Point3 b)
     {
         Pmin = new Point3(a);
@@ -25,6 +26,7 @@ public class Box3
     {
         this(b.Pmin, b.Pmax);
     }
+    
     public float[] getIntersection(Ray3 r)
     {
         float tx1 = (Pmin.X - r.O.X)/r.D.X;
@@ -51,16 +53,20 @@ public class Box3
         }
         return null;
     }
+    
+    
     public boolean testIntersection(Ray3 r)
     {
         return getIntersection(r) != null;
     }
+    
     public boolean contains(Point3 p)
     {
         return p.X > Pmin.X && p.X < Pmax.X
                 && p.Y > Pmin.Y && p.Y < Pmax.Y
                 && p.Z > Pmin.Z && p.Y < Pmax.Y;
     }
+    
     public Box3 union(Point3 p)
     {
         Box3 r = new Box3(this);
@@ -73,6 +79,7 @@ public class Box3
         r.unionWith(p);
         return r;
     }
+    
     public void unionWith(Point3 p)
     {
         if (p.X < Pmin.X)
@@ -104,15 +111,18 @@ public class Box3
         {
             Pmax.Z = p.Z;
         }
+        
     }
+    
     public void unionWith(Box3 b)
     {
         unionWith(b.Pmin);
         unionWith(b.Pmax);
     }
+
     public int dominantDimension()
     {
-        Vector3 d = new Vector3(Pmin, Pmax);
+        Vector3 d = Pmax.subtract(Pmin);
         if (d.X > d.Y)
         {
             if (d.X > d.Z)
@@ -127,9 +137,11 @@ public class Box3
         }
         return 2;
     }
+    
     public float area()
     {
-        Vector3 d = new Vector3(Pmin, Pmax);
+        Vector3 d = Pmax.subtract(Pmin);
         return 2.0f*(d.X*d.Y + d.X*d.Z + d.Y*d.Z);
     }
+    
 }

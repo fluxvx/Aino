@@ -5,14 +5,17 @@ import java.util.ArrayList;
 public class CoordinateSystem3 extends Transform3
 {
     public ArrayList<Transform3> transforms;
+    
     public CoordinateSystem3()
     {
         transforms = new ArrayList<Transform3>();
     }
+    
     public void add(Transform3 t)
     {
         transforms.add(t);
     }
+    
     public Point3 toWorldSpace(Point3 p)
     {
         for (int i=0; i<transforms.size(); ++i)
@@ -21,6 +24,7 @@ public class CoordinateSystem3 extends Transform3
         }
         return p;
     }
+    
     public Point3 toObjectSpace(Point3 p)
     {
         for (int i=transforms.size()-1; i>=0; --i)
@@ -29,6 +33,7 @@ public class CoordinateSystem3 extends Transform3
         }
         return p;
     }
+    
     public Vector3 toWorldSpace(Vector3 v)
     {
         for (int i=0; i<transforms.size(); ++i)
@@ -37,6 +42,7 @@ public class CoordinateSystem3 extends Transform3
         }
         return v;
     }
+    
     public Vector3 toObjectSpace(Vector3 v)
     {
         for (int i=transforms.size()-1; i>=0; --i)
@@ -45,6 +51,8 @@ public class CoordinateSystem3 extends Transform3
         }
         return v;
     }
+    
+    
     public Ray3 toWorldSpace(Ray3 r)
     {
         for (int i=0; i<transforms.size(); ++i)
@@ -53,6 +61,7 @@ public class CoordinateSystem3 extends Transform3
         }
         return r;
     }
+    
     public Ray3 toObjectSpace(Ray3 r)
     {
         for (int i=transforms.size()-1; i>=0; --i)
@@ -61,6 +70,10 @@ public class CoordinateSystem3 extends Transform3
         }
         return r;
     }
+    
+    
+    
+    
     public Normal3 toWorldSpace(Normal3 n)
     {
         for (int i=0; i<transforms.size(); ++i)
@@ -69,6 +82,7 @@ public class CoordinateSystem3 extends Transform3
         }
         return n;
     }
+    
     public Normal3 toObjectSpace(Normal3 n)
     {
         for (int i=transforms.size()-1; i>=0; --i)
@@ -77,4 +91,7 @@ public class CoordinateSystem3 extends Transform3
         }
         return n;
     }
+
+    
+
 }
